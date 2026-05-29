@@ -1,0 +1,36 @@
+{
+  "name": "perpustakaan-app",
+  "version": "1.0.0",
+  "description": "Aplikasi Perpustakaan Digital dengan React+Vite dan Express.js",
+  "author": "Developer",
+  "license": "MIT",
+  "keywords": ["perpustakaan", "library", "react", "express", "mysql", "jwt"],
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "setup-db": "node setup-database.js",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "test": "echo \"Run tests in backend and frontend directories\"",
+    "clean": "rimraf backend/node_modules frontend/node_modules node_modules",
+    "reset": "npm run clean && npm run install-all"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "mysql2": "^3.6.5",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/perpustakaan-app.git"
+  }
+}
