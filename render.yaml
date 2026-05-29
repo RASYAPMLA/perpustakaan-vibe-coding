@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: perpustakaan-backend
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        value: perpustakaan_secret_key_2024
+        sync: false
+    
+  - type: static
+    name: perpustakaan-frontend
+    env: static
+    region: singapore
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://perpustakaan-backend.onrender.com
+    
+  - type: pserv
+    name: db-perpustakaan
+    env: postgres
+    region: singapore
+    plan: free
+    ipAllowList: []
